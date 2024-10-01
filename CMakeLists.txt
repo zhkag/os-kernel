@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+PROJECT(kernel)
+INCLUDE_DIRECTORIES(
+	${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+file(GLOB KERNEL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
+)
+
+add_library(kernel STATIC ${KERNEL_SOURCES})
+install(TARGETS kernel DESTINATION ${INSTALL_DIR}/lib)
+install(DIRECTORY include/ DESTINATION ${INSTALL_DIR}/include/kernel FILES_MATCHING PATTERN "*.h")
