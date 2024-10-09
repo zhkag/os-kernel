@@ -61,7 +61,7 @@ void os_scheduler_start(void)
 {
     struct os_thread * thread = get_highest_priority_thread();
     os_set_current_thread(thread);
-    rt_hw_context_switch_to(&thread->sp);
+    os_context_switch_to(&thread->sp);
 }
 
 void os_schedule()
@@ -81,11 +81,11 @@ void os_switch_thread(struct os_thread * form,struct os_thread * to)
     os_set_current_thread(to);
     if (os_irq_get_count() == 0)
     {
-        rt_hw_context_switch(&form->sp,&to->sp);
+        os_context_switch(&form->sp,&to->sp);
     }
     else
     {
-        rt_hw_context_switch_interrupt(&form->sp, &to->sp, form, to);
+        os_context_switch_interrupt(&form->sp, &to->sp, form, to);
     }
 }
 

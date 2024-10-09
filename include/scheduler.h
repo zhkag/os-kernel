@@ -15,8 +15,8 @@ struct os_thread * os_thread_self(void);
 void os_switch_thread(struct os_thread * form,struct os_thread * to);
 void os_thread_tick_decrease(void);
 
-void rt_hw_context_switch_to(void* to);
-void rt_hw_context_switch(void* from, void* to);
-void rt_hw_context_switch_interrupt(void* from, void* to,struct os_thread * from_thread,struct os_thread * to_thread);
+void os_context_switch_to(void* to);
+void os_context_switch(void* from, void* to);
+void os_context_switch_interrupt(void* from, void* to,struct os_thread * from_thread,struct os_thread * to_thread);
 
 #endif //OS_SCHEDULER_H
